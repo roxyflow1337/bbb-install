@@ -369,7 +369,7 @@ check_root() {
 }
 
 check_mem() {
-  if awk '$1~/MemTotal/ {exit !($2<3910000)}' /proc/meminfo; then
+  if awk '$1~/MemTotal/ {exit !($2<10000)}' /proc/meminfo; then
     echo "Your server needs to have (at least) 4G of memory."
     if [ "$SKIP_MIN_SERVER_REQUIREMENTS_CHECK" != true ]; then
       exit 1
