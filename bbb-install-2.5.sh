@@ -369,7 +369,7 @@ check_root() {
 }
 
 check_mem() {
-  if awk '$1~/MemTotal/ {exit !($2<3940000)}' /proc/meminfo; then
+  if awk '$1~/MemTotal/ {exit !($2<3910000)}' /proc/meminfo; then
     echo "Your server needs to have (at least) 4G of memory."
     if [ "$SKIP_MIN_SERVER_REQUIREMENTS_CHECK" != true ]; then
       exit 1
@@ -378,7 +378,7 @@ check_mem() {
 }
 
 check_cpus() {
-  if [ "$(nproc --all)" -lt 4 ]; then
+  if [ "$(nproc --all)" -lt 1 ]; then
     echo "Your server needs to have (at least) 4 CPUs (8 recommended for production)."
     if [ "$SKIP_MIN_SERVER_REQUIREMENTS_CHECK" != true ]; then
       exit 1
